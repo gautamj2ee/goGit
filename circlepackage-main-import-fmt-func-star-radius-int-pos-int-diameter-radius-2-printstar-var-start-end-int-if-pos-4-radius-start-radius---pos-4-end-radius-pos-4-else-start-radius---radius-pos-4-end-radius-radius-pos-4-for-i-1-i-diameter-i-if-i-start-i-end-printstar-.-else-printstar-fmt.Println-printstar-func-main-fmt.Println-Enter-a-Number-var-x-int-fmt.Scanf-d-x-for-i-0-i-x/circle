@@ -1,0 +1,36 @@
+package main
+
+import "fmt"
+
+func star(radius int, pos int) {
+	diameter := radius * 2
+
+	printstar := "                     "
+	var start, end int
+	if pos*4 < radius {
+		start = radius - pos*4
+		end = radius + pos*4
+	} else {
+		start = radius - (radius-pos)*4
+		end = radius + (radius-pos)*4
+	}
+
+	for i := 1; i <= diameter; i++ {
+		if i >= start && i <= end {
+			printstar += "."
+		} else {
+			printstar += " "
+		}
+	}
+	fmt.Println(printstar)
+}
+
+func main() {
+	fmt.Println("Enter a Number: ")
+	var x int
+	fmt.Scanf("%d", &x)
+
+	for i := 0; i <= x/2; i++ {
+		star(x, i)
+	}
+}
